@@ -1,0 +1,41 @@
+@import '../../styles/_variables.scss';
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 16px;
+    font-family: $font-main;
+    font-weight: 700;
+    color: $color-text-white;
+    width: max-content;
+
+    &.large {
+        padding: 4px 12px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    &.small {
+        padding: 2px 8px;
+        font-size: 12px;
+        line-height: 16px;
+        gap: 3px;
+    }
+
+    &.excellent {
+        background-color: #e3cd05;
+    }
+
+    &.good {
+        background-color: #308E21;
+    }
+
+    &.neutral {
+        background-color: #777777;
+    }
+
+    &.low {
+        background-color: $color-error;
+    }
+}

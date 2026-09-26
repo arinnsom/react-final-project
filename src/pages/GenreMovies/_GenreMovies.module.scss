@@ -1,0 +1,111 @@
+@import '../../styles/_variables.scss';
+
+.genreMoviesPage {
+    padding: 32px 0 0;
+    margin: 0 0 160px;
+
+    @media (max-width: 768px) {
+        padding: 24px 0 0;
+        margin: 0 0 40px;
+    }
+}
+
+.pageHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 64px;
+
+    @media (max-width: 768px) {
+        margin: 0 0 40px;
+    }
+}
+
+.backButton {
+    background: transparent;
+    border: none;
+    color: $color-text-white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+
+    @media (max-width: 768px) {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.pageTitle {
+    font-family: $font-main;
+    font-size: 48px;
+    line-height: 56px;
+    font-weight: 700;
+    color: $color-text-white;
+    text-align: left;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+        line-height: 32px;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 64px 40px;
+    padding: 0 0 64px;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        padding: 0 0 40px;
+    }
+}
+
+.paginationBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.moreBtn {
+    font-family: $font-main;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    padding: 16px 48px;
+    border-radius: 28px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: $color-primary;
+    color: $color-text-white;
+
+    &:hover {
+        background-color: $color-primary-hover;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.loader {
+    font-family: $font-main;
+    color: $color-text-muted;
+    font-size: 16px;
+    text-align: center;
+    padding: 40px 0;
+}

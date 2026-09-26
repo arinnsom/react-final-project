@@ -1,0 +1,62 @@
+@import '../../styles/_variables.scss';
+
+.button {
+  font-family: $font-main;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 28px; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  &.authbtn{
+    background-color: transparent;
+    font-size: 24px;
+    line-height: 32px;
+    padding: 0;
+  }
+
+  &.primary {
+    background-color: $color-primary;
+    color: $color-text-white;
+    
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+  }
+
+  &.secondary {
+    background-color: $color-secondary;
+    color: $color-text-white;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    
+    &:hover {
+      background-color: lighten($color-secondary, 5%);
+    }
+
+    @media (max-width: 768px){
+      padding: 16px 30px;
+    }
+  }
+
+  &.white {
+    background-color: $color-bg-light;
+    color: $color-bg-dark;
+    border: 1px solid #dcdde1;
+    
+    &:hover {
+      background-color: #f5f6fa;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

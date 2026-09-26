@@ -1,0 +1,73 @@
+@import '../../styles/_variables.scss';
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 40px 0;
+
+    @media (max-width: 768px) {
+        justify-content: flex-start;
+        padding: 24px 0;
+    }
+}
+
+.socialContainer {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.socialLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid rgba($color-text-white, 0.8);
+    color: rgba($color-text-white, 0.8);
+    background: transparent;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-text-white;
+        border-color: $color-text-white;
+        background-color: rgba($color-text-white, 0.05);
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        width: 24px;
+        height: 24px;
+
+        &:nth-child(1) {
+            svg {
+                width: 13px;
+                height: 7px;
+            }
+        }
+
+        &:nth-child(2) {
+            svg {
+                width: 10px;
+                height: 7px;
+            }
+        }
+
+        &:nth-child(3) {
+            svg {
+                width: 7px;
+                height: 12px;
+            }
+        }
+
+        &:nth-child(4) {
+            svg {
+                width: 11px;
+                height: 9px;
+            }
+        }
+    }
+}

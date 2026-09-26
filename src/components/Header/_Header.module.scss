@@ -1,0 +1,291 @@
+@import '../../styles/_variables.scss';
+
+.header {
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  margin: 0 0 32px;
+
+  &.headerWithModal {
+    z-index: 1000;
+    backdrop-filter: none;
+  }
+
+  @media (max-width: 768px) {
+    height: 32px;
+    padding: 16px 0 8px;
+    margin: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.menu {
+  display: flex;
+  gap: 37px;
+  align-items: center;
+}
+
+.menuItem {
+  font-family: $font-main;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba($color-text-white, 0.7);
+  text-decoration: none;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-text-white;
+  }
+
+  &.active {
+    color: $color-text-white;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #7c4dff;
+    }
+  }
+}
+
+.searchBlock {
+  flex: 1;
+  width: 655px;
+  position: relative;
+}
+
+.inputContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clearButton {
+  position: absolute;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: $color-text-muted;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover {
+    color: $color-text-white;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 540px;
+  background-color: $color-secondary;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+  @media (max-width: 768px) {
+    padding: 24px 20px;
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  gap: 16px;
+  padding: 20px 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  outline: 1px solid transparent;
+
+  &:hover {
+    outline-color: rgba($color-text-white, 0.5);
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 220px;
+    padding: 0;
+
+    &:hover {
+      outline-color: transparent;
+    }
+  }
+}
+
+.miniPoster {
+  width: 40px;
+  height: 52px;
+  object-fit: cover;
+  background-color: $color-secondary;
+
+  @media (max-width: 768px) {
+    width: 158px;
+    height: 206px;
+  }
+}
+
+.movieInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 220px;
+  }
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: $font-main;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: $color-text-muted;
+  flex-wrap: wrap;
+}
+
+
+.movieTitle {
+  font-family: $font-main;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  text-align: left;
+  color: $color-text-white;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.authBlock {
+  display: flex;
+  align-items: center;
+}
+
+.userNameLink {
+  font-family: $font-main;
+  font-size: 24px;
+  line-height: 32px;
+  padding: 0;
+  color: $color-text-white;
+  border-bottom: 2px solid #7c4dff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 18px;
+      width: auto;
+    }
+  }
+
+  .mobileActions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .iconButton {
+    background: transparent;
+    border: none;
+    color: rgba($color-text-white, 0.8);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &:active {
+      color: $color-text-white;
+    }
+  }
+
+  .searchBlockMobile {
+    width: 100%;
+    position: relative;
+    z-index: 1001;
+    padding: 25px 0 0;
+
+    .inputContainer {
+      width: 100%;
+      position: relative;
+      z-index: 1003;
+
+      :global(.input) {
+        width: 100%;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: -20px;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      pointer-events: all;
+    }
+
+    .dropdown {
+      flex-direction: row;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: calc(100% - 40px);
+      max-height: calc(100vh - 80px);
+      overflow: auto;
+      scrollbar-width: none;
+      z-index: 1002;
+      gap: 16px;
+    }
+  }
+
+}
