@@ -3,7 +3,7 @@
 Бета-версия популярного стримингового киносервиса, разработанная по дизайн-макетам VK. Проект представляет собой полноценное одностраничное приложение (SPA) с системой сессионной авторизации, динамическим поиском по названию, интерактивными модальными окнами, бесконечным скроллом и каталогом фильмов.
 
 ## Ссылки на проект
-* [https://gregarious-moonbeam-25d830.netlify.app/](https://gregarious-moonbeam-25d830.netlify.app/)
+[https://gregarious-moonbeam-25d830.netlify.app/](https://gregarious-moonbeam-25d830.netlify.app/)
 
 ---
 
@@ -65,7 +65,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com.git
+   git clone https://github.com/arinnsom/react-final-project
    ```
 2. Установите зависимости проекта:
    ```bash
