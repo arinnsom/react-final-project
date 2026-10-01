@@ -1,75 +1,78 @@
-# React + TypeScript + Vite
+# Стриминговый сервис VK Маруся Кино (Финальный React-проект)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Бета-версия популярного стримингового киносервиса, разработанная по дизайн-макетам VK. Проект представляет собой полноценное одностраничное приложение (SPA) с системой сессионной авторизации, динамическим поиском по названию, интерактивными модальными окнами, бесконечным скроллом и каталогом фильмов.
 
-Currently, two official plugins are available:
+## Ссылки на проект
+* []()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Используемый стек технологий & Библиотеки
+* **React 18** — компонентный подход, управление хуками состояния и жизненного цикла
+* **TypeScript** — строгая типизация данных, интерфейсов компонентов, пропсов и API-ответов
+* **Vite** — сборщик проекта
+* **React Router** — маршрутизация и навигация между страницами приложения
+* **Redux / State Management** — глобальное управление состоянием приложения (авторизация, списки избранного)
+* **Axios** — асинхронное взаимодействие с API и подгрузка данных
+* **SCSS / CSS3 / HTML5** — модульная верстка на основе кастомного UI-kit по макетам Figma без использования сторонних UI-библиотек (Bootstrap/MUI)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Сетевое взаимодействие и Работа с API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+В проекте реализована продвинутая логика взаимодействия с бэкенд-сервером:
+* **Session-based Authentication:** Реализована полноценная авторизация на основе серверных сессий и кук. При успешном входе сервер присылает информацию о сессии в cookie, которая автоматически прикрепляется к последующим запросам.
+* **Автоматическое и ручное разлогинивание:** Настроена обработка истечения жизненного цикла сессии на сервере, а также функция ручного выхода с вызовом соответствующего API-запроса, полной очисткой клиентских Cookie, сбросом глобального стейта и редиректом на главную страницу.
+* **Преобразование данных:** Реализован слой адаптеров данных. Сырой ответ от API (массив строк с названиями жанров) динамически трансформируется на клиенте в массив структурированных объектов с уникальными ID и соответствующими графическими элементами из макета.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Архитектура и Промышленный стайлгайд
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Проект разработан в строгом соответствии с канонами чистого кода и стайлгайда крупной IT-корпорации:
+* **Логическое разделение структуры:** Приложение разделено на изолированные директории: `pages` (страницы), `components` (переиспользуемые компоненты), `store` (управление состоянием), `types` (TypeScript-интерфейсы).
+* **Строгий Naming Convention:** Наименования файлов компонентов выполнены в формате существительных с использованием **PascalCase**. Имена методов и переменных написаны без сокращений и транслита в формате глаголов, описывающих действие, с использованием **camelCase**.
+* **UI-Kit Approach:** Разработка началась с создания базовой библиотеки атомарных компонентов (кнопки, инпуты, карточки), на основе которых собирались сложные интерфейсы страниц в Figma.
 
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Реализованный функционал и Состав продукта
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Главная страница (Дашборд)
+* **Случайный подбор:** Интерактивный блок с обложкой и информацией о случайном фильме с функцией мгновенной генерации новой картины по клику на кнопку.
+* **IMDb Топ-10:** Динамический список из 10 лучших кинолент на основе актуального рейтинга.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Страницы Жанров и Бесконечный скролл
+* Главный экран со списком существующих киножанров в виде карточек.
 
-```
+### Детальная страница фильма & Трейлеры
+* Полное описание картины, вывод детальных медиа-данных и обложки.
+* Интегрированный в модальное окно видеоплеер для просмотра официальных трейлеров.
+* Динамическая кнопка добавления/удаления фильма из «Избранного» с проверкой статуса пользователя.
+
+### Система авторизации и Аккаунт пользователя
+* **Smart-модалка:** Форма входа, динамически переключающаяся в режим регистрации
+* **Валидация форм:** Все поля обязательны для заполнения. Реализована интерактивная подсветка пустых полей красной рамкой при попытке отправки.
+* **Защита данных (Guards):** Ограничение функций «Избранного» для гостей. При попытке добавить фильм неавторизованным пользователем автоматически вызывается окно авторизации.
+* **Личный кабинет:** Страница профиля с персональными данными из формы регистрации и галереей сохраненных фильмов. Динамическое изменение кнопки «Войти» в шапке на фамилию пользователя после успешного входа.
+
+### Глобальный интерактивный поиск
+* Модальное окно поиска, вызываемое из шапки навигации, для быстрого нахождения фильмов по названию в реальном времени.
+
+---
+
+## Инструкция для локального запуска
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com.git
+   ```
+2. Установите зависимости проекта:
+   ```bash
+   npm install
+   ```
+3. Запустите локальный сервер разработки:
+   ```bash
+   npm run dev
+   ```
+   *Сайт будет доступен по адресу: `http://localhost:5173/`*
